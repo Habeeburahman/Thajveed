@@ -2,11 +2,11 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_ripple/flutter_ripple.dart';
 import 'dart:math';
 import 'dart:html' as html;
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_ripple/flutter_ripple.dart';
 import 'package:stroke_text/stroke_text.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -22,7 +22,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
+    return MaterialApp(
+        // theme: ThemeData(
+        //   visualDensity: VisualDensity.adaptivePlatformDensity,
+        // ),
+        debugShowCheckedModeBanner: false,
+        home: HomePage());
   }
 }
 
@@ -270,7 +275,7 @@ class _HomePageState extends State<HomePage> {
             fit: BoxFit.contain,
           )),
           Positioned(
-              bottom: 5,
+              bottom: height / 25,
               right: 0,
               child: Column(
                 children: [
@@ -283,14 +288,13 @@ class _HomePageState extends State<HomePage> {
                           double tabWidth = 494;
                           if (constraints.maxWidth > tabWidth) {
                             print(constraints.maxWidth.toDouble());
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            return Column(
                               children: [
                                 Container(
                                   // color: Color.fromRGBO(133, 178, 250, 0.698),
                                   child: Column(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "حُرُوفُ الشَّفَةِ",
                                         style: TextStyle(
                                             color: Colors.black87,
@@ -317,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                                             function: _startAnimationOfFah,
                                             name: "ف",
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 20,
                                           )
                                         ],
@@ -329,7 +333,7 @@ class _HomePageState extends State<HomePage> {
                                   // color: Color.fromRGBO(255, 213, 150, .7),
                                   child: Column(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "حُرُوفُ الحَلْقِ",
                                         style: TextStyle(
                                             color: Colors.black87,
@@ -340,7 +344,7 @@ class _HomePageState extends State<HomePage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 20,
                                           ),
                                           LetterButton(
@@ -384,7 +388,7 @@ class _HomePageState extends State<HomePage> {
                         // color: Color.fromRGBO(185, 0, 111, .4),
                         child: Column(
                           children: [
-                            Text(
+                            const Text(
                               "حُرُوفُ اللِسَانِ",
                               style: TextStyle(
                                   color: Colors.black87,
@@ -717,7 +721,7 @@ class ArabicLetterState extends State<ArabicLetter>
     // _player.setUrl("https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
 
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 4));
     _scaleAnimation = Tween<double>(begin: 0.0, end: 7)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0)
@@ -735,10 +739,9 @@ class ArabicLetterState extends State<ArabicLetter>
     //     .setUrl(url ?? "https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
     await _player.setAsset("assets/audios/simpleaudio.mp3");
     _controller.reset();
-    getRandomColor();
 
     _controller.forward();
-    await Future.delayed(Duration(milliseconds: 700));
+    await Future.delayed(const Duration(milliseconds: 200));
     _player.play();
   }
 
@@ -746,11 +749,6 @@ class ArabicLetterState extends State<ArabicLetter>
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  void getRandomColor() {
-    color = Color.fromRGBO(
-        random.nextInt(256), random.nextInt(256), random.nextInt(256), 1);
   }
 
   @override
@@ -781,16 +779,17 @@ class ArabicLetterState extends State<ArabicLetter>
                           //     child: CustomPaint(
                           //   painter: RipplePainter(_scaleAnimation.value),
                           // )),
-                          Center(
-                            child: FlutterRipple(
-                              rippleColor: Color.fromARGB(255, 249, 137, 184),
-                              radius: 40,
+                          FlutterRipple(
+                            duration: const Duration(seconds: 4),
+                            radius: 20,
+                            rippleColor: Color.fromARGB(255, 253, 154, 154),
+                            child: Center(
                               child: StrokeText(
                                 textColor: Colors.redAccent,
                                 strokeColor: Colors.white,
                                 strokeWidth: 3,
                                 text: widget.letter,
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                   fontSize: 40.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -820,13 +819,18 @@ class LetterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: NeumorphicButton(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          onPressed: function,
-          child: Text(
-            name,
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          )),
+      child: SizedBox(
+        width: 50,
+        height: 50,
+        child: NeumorphicButton(
+            onPressed: function,
+            child: Center(
+              child: Text(
+                name,
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              ),
+            )),
+      ),
     );
   }
 }
