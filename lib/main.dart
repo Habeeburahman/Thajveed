@@ -1,20 +1,19 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_ripple/flutter_ripple.dart';
 import 'dart:math';
-import 'dart:html' as html;
+import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stroke_text/stroke_text.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -22,21 +21,22 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        // theme: ThemeData(
-        //   visualDensity: VisualDensity.adaptivePlatformDensity,
-        // ),
-        debugShowCheckedModeBanner: false,
-        home: HomePage());
+    return ResponsiveSizer(builder: (context, orientation, diviceType) {
+      return const MaterialApp(
+          debugShowCheckedModeBanner: false, home: HomePage());
+    });
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int tabWidth = 820;
   // var cacheManager = DefaultCacheManager();
   List<String> audioUrls = [
     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
@@ -264,238 +264,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        // backgroundColor: Color.fromRGBO(194, 32, 32, 1),
+        // backgroundColor: const Color.fromRGBO(194, 32, 32, 1),
 
         backgroundColor: Color(0xFFF2DDBE),
         body: Stack(children: [
-          Positioned.fill(
-              child: Image.asset(
-            "assets/image/humanwithoutmarks.png",
-            fit: BoxFit.contain,
-          )),
           Positioned(
-              bottom: height / 25,
+              left: 0,
               right: 0,
+              top: 0,
               child: Column(
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        width: width,
-                        child: LayoutBuilder(builder:
-                            (BuildContext context, BoxConstraints constraints) {
-                          double tabWidth = 494;
-                          if (constraints.maxWidth > tabWidth) {
-                            print(constraints.maxWidth.toDouble());
-                            return Column(
-                              children: [
-                                Container(
-                                  // color: Color.fromRGBO(133, 178, 250, 0.698),
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        "حُرُوفُ الشَّفَةِ",
-                                        style: TextStyle(
-                                            color: Colors.black87,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          LetterButton(
-                                            function: _startAnimationOfVav,
-                                            name: "و",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfBah,
-                                            name: "ب",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfMeem,
-                                            name: "م",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfFah,
-                                            name: "ف",
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  // color: Color.fromRGBO(255, 213, 150, .7),
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                        "حُرُوفُ الحَلْقِ",
-                                        style: TextStyle(
-                                            color: Colors.black87,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfKrag,
-                                            name: "خ",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfGown,
-                                            name: "غ",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfHaeh,
-                                            name: "ح",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfAin,
-                                            name: "ع",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfHah,
-                                            name: "ه",
-                                          ),
-                                          LetterButton(
-                                            function: _startAnimationOfAa,
-                                            name: "أ",
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return Text("sidoijfosid");
-                          }
-                        }),
-                      ),
-                      Container(
-                        width: width,
-                        // color: Color.fromRGBO(185, 0, 111, .4),
-                        child: Column(
-                          children: [
-                            const Text(
-                              "حُرُوفُ اللِسَانِ",
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    LetterButton(
-                                      function: _startAnimationOfLadu,
-                                      name: "ض",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfLam,
-                                      name: "ل",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfKaf,
-                                      name: "ك",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfQwaf,
-                                      name: "ق",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfJeem,
-                                      name: "ج",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfSheen,
-                                      name: "ش",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfYah,
-                                      name: "ي",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfThwah,
-                                      name: "ط",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfDhal,
-                                      name: "د",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfThah,
-                                      name: "ت",
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    LetterButton(
-                                      function: _startAnimationOfSa,
-                                      name: "ث",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfZal,
-                                      name: "ذ",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOflah,
-                                      name: "ظ",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfNoon,
-                                      name: "ن",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfRah,
-                                      name: "ر",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfNoon,
-                                      name: "ن",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfRah,
-                                      name: "ر",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfSwad,
-                                      name: "ص",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfSeen,
-                                      name: "س",
-                                    ),
-                                    LetterButton(
-                                      function: _startAnimationOfZay,
-                                      name: "ز",
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  Image.asset(
+                    "assets/image/humanwithoutmarksedited.png",
+                    fit: BoxFit.contain,
                   ),
+                  buildButtons(width, context)
                 ],
               )),
+          // Positioned(
+          //     bottom: height / 25,
+          //     right: 0,
+          //     left: 0,
+          //     top: 300,
+          //     child: buildButtons(width, context)),
           Positioned(
               left: width * .4,
               top: height * .1,
@@ -694,11 +487,238 @@ class _HomePageState extends State<HomePage> {
               )),
         ]));
   }
+
+  Column buildButtons(double width, BuildContext context) {
+    return Column(
+      children: [
+        Column(
+          children: [
+            SizedBox(
+              width: width,
+              child: LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth > tabWidth) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      getHuroofuShafath(),
+                      getHuroofuQalq(),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    children: [
+                      getHuroofuShafath(),
+                      getHuroofuQalq(),
+                    ],
+                  );
+                }
+              }),
+            ),
+            huroofuLisan(width),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget huroofuLisan(double width) {
+    return SizedBox(
+      width: width,
+      // color: Color.fromRGBO(185, 0, 111, .4),
+      child: Column(
+        children: [
+          Text(
+            "حُرُوفُ اللِسَانِ",
+            style: TextStyle(
+                color: Colors.black87,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 2.0,
+              runSpacing: 2.0,
+              //    mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LetterButton(
+                  function: _startAnimationOfLadu,
+                  name: "ض",
+                ),
+                LetterButton(
+                  function: _startAnimationOfLam,
+                  name: "ل",
+                ),
+                LetterButton(
+                  function: _startAnimationOfKaf,
+                  name: "ك",
+                ),
+                LetterButton(
+                  function: _startAnimationOfQwaf,
+                  name: "ق",
+                ),
+                LetterButton(
+                  function: _startAnimationOfJeem,
+                  name: "ج",
+                ),
+                LetterButton(
+                  function: _startAnimationOfSheen,
+                  name: "ش",
+                ),
+                LetterButton(
+                  function: _startAnimationOfYah,
+                  name: "ي",
+                ),
+                LetterButton(
+                  function: _startAnimationOfThwah,
+                  name: "ط",
+                ),
+                LetterButton(
+                  function: _startAnimationOfDhal,
+                  name: "د",
+                ),
+                LetterButton(
+                  function: _startAnimationOfThah,
+                  name: "ت",
+                ),
+                LetterButton(
+                  function: _startAnimationOfSa,
+                  name: "ث",
+                ),
+                LetterButton(
+                  function: _startAnimationOfZal,
+                  name: "ذ",
+                ),
+                LetterButton(
+                  function: _startAnimationOflah,
+                  name: "ظ",
+                ),
+                LetterButton(
+                  function: _startAnimationOfNoon,
+                  name: "ن",
+                ),
+                LetterButton(
+                  function: _startAnimationOfRah,
+                  name: "ر",
+                ),
+                LetterButton(
+                  function: _startAnimationOfNoon,
+                  name: "ن",
+                ),
+                LetterButton(
+                  function: _startAnimationOfRah,
+                  name: "ر",
+                ),
+                LetterButton(
+                  function: _startAnimationOfSwad,
+                  name: "ص",
+                ),
+                LetterButton(
+                  function: _startAnimationOfSeen,
+                  name: "س",
+                ),
+                LetterButton(
+                  function: _startAnimationOfZay,
+                  name: "ز",
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget getHuroofuQalq() {
+    return Column(
+      children: [
+        Text(
+          "حُرُوفُ الحَلْقِ",
+          style: TextStyle(
+              color: Colors.black87,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 2.0,
+            runSpacing: 2.0,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              LetterButton(
+                function: _startAnimationOfKrag,
+                name: "خ",
+              ),
+              LetterButton(
+                function: _startAnimationOfGown,
+                name: "غ",
+              ),
+              LetterButton(
+                function: _startAnimationOfHaeh,
+                name: "ح",
+              ),
+              LetterButton(
+                function: _startAnimationOfAin,
+                name: "ع",
+              ),
+              LetterButton(
+                function: _startAnimationOfHah,
+                name: "ه",
+              ),
+              LetterButton(
+                function: _startAnimationOfAa,
+                name: "أ",
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column getHuroofuShafath() {
+    return Column(
+      children: [
+        Text(
+          "حُرُوفُ الشَّفَةِ",
+          style: TextStyle(
+              color: Colors.black87,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LetterButton(
+              function: _startAnimationOfVav,
+              name: "و",
+            ),
+            LetterButton(
+              function: _startAnimationOfBah,
+              name: "ب",
+            ),
+            LetterButton(
+              function: _startAnimationOfMeem,
+              name: "م",
+            ),
+            LetterButton(
+              function: _startAnimationOfFah,
+              name: "ف",
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }
 
 class ArabicLetter extends StatefulWidget {
   ArabicLetter({required this.key, required this.letter}) : super(key: key);
   String letter;
+  @override
   Key key;
 
   @override
@@ -741,7 +761,8 @@ class ArabicLetterState extends State<ArabicLetter>
     _controller.reset();
 
     _controller.forward();
-    await Future.delayed(const Duration(milliseconds: 200));
+
+    // await Future.delayed(const Duration(milliseconds: 200));
     _player.play();
   }
 
@@ -780,9 +801,10 @@ class ArabicLetterState extends State<ArabicLetter>
                           //   painter: RipplePainter(_scaleAnimation.value),
                           // )),
                           FlutterRipple(
-                            duration: const Duration(seconds: 4),
-                            radius: 20,
-                            rippleColor: Color.fromARGB(255, 253, 154, 154),
+                            duration: const Duration(seconds: 20),
+                            radius: 30,
+                            rippleColor:
+                                const Color.fromARGB(255, 253, 154, 154),
                             child: Center(
                               child: StrokeText(
                                 textColor: Colors.redAccent,
@@ -817,20 +839,19 @@ class LetterButton extends StatelessWidget {
   Function() function;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: 50,
-        height: 50,
-        child: NeumorphicButton(
-            onPressed: function,
-            child: Center(
-              child: Text(
-                name,
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-              ),
-            )),
-      ),
+    return SizedBox(
+      width: 33.sp,
+      height: 33.sp,
+      child: NeumorphicButton(
+          padding: EdgeInsets.all(0),
+          margin: EdgeInsets.all(8),
+          onPressed: function,
+          child: Center(
+            child: Text(
+              name,
+              style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
+            ),
+          )),
     );
   }
 }
