@@ -56,11 +56,31 @@ class _HomePageState extends State<HomePage> {
   //   await cacheManager.downloadFile(url);
   // }
 
+  final GlobalKey _imageKey = GlobalKey();
+
+  double _imageWidth = 0.0;
+  double _imageHeight = 0.0;
+
   @override
   void initState() {
-    // getAllAudios();
-    // TODO: implement initState
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      // Call getImageSize() after the image is laid out
+      getImageSize();
+    });
     super.initState();
+  }
+
+  void getImageSize() {
+    final RenderBox? imageBox =
+        _imageKey.currentContext?.findRenderObject() as RenderBox?;
+    if (imageBox != null && imageBox.hasSize) {
+      setState(() {
+        _imageWidth = imageBox.size.width;
+        _imageHeight = imageBox.size.height;
+        print(_imageHeight);
+        print(_imageWidth);
+      });
+    }
   }
 
   final GlobalKey<ArabicLetterState> globalKeyOfKrag =
@@ -266,226 +286,244 @@ class _HomePageState extends State<HomePage> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        // backgroundColor: const Color.fromRGBO(194, 32, 32, 1),
+        backgroundColor: const Color.fromRGBO(194, 32, 32, 1),
 
-        backgroundColor: Color(0xFFF2DDBE),
-        body: Stack(children: [
-          Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              child: Column(
+        // backgroundColor: Color(0xFFF2DDBE),
+        body: Column(
+          children: [
+            Container(
+              width: 100.w,
+              height: 46.h,
+              child: Stack(
                 children: [
-                  Image.asset(
-                    "assets/image/humanwithoutmarksedited.png",
-                    fit: BoxFit.contain,
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/image/humanwithoutmarksedited.png', // Replace this with your image path
+                      key: _imageKey,
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                  buildButtons(width, context)
+                  Positioned(
+                    left: 50.w,
+                    bottom: 40.h,
+                    right: 10.w,
+                    child: Text(
+                      "s",
+                      style: TextStyle(
+                          color: Colors.red, backgroundColor: Colors.white),
+                    ),
+                  ),
+                  Positioned(
+                      left: 20.w,
+                      bottom: 20.h,
+                      right: 20.w,
+                      child: ArabicLetter(
+                        letter: "خ",
+                        key: globalKeyOfKrag,
+                      )),
+                  Positioned(
+                      left: 50.w,
+                      bottom: 40.h,
+                      right: 10.w,
+                      child: ArabicLetter(
+                        letter: "غ",
+                        key: globalKeyOfGown,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ح",
+                        key: globalKeyOfHaeh,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ه",
+                        key: globalKeyOfHah,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "أ",
+                        key: globalKeyOfAA,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ع",
+                        key: globalKeyOfAin,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ق",
+                        key: globalKeyOfQwaf,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ك",
+                        key: globalKeyOfKaf,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ل",
+                        key: globalKeyOfLam,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ض",
+                        key: globalKeyOfLadu,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ج",
+                        key: globalKeyOfJeem,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ش",
+                        key: globalKeyOfSheen,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ي",
+                        key: globalKeyOfYah,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ن",
+                        key: globalKeyOfNoon,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .1,
+                      child: ArabicLetter(
+                        letter: "ر",
+                        key: globalKeyOfRah,
+                      )),
+                  Positioned(
+                      left: 20.w,
+                      bottom: 20.h,
+                      right: 20.w,
+                      child: ArabicLetter(
+                        letter: "و",
+                        key: globalKeyOfVav,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .3,
+                      child: ArabicLetter(
+                        letter: "ب",
+                        key: globalKeyOfBah,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .3,
+                      child: ArabicLetter(
+                        letter: "م",
+                        key: globalKeyOfMeem,
+                      )),
+                  Positioned(
+                      left: width * .4,
+                      top: height * .3,
+                      child: ArabicLetter(
+                        letter: "ف",
+                        key: globalKeyOfFah,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ذ",
+                        key: globalKeyOfZal,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ث",
+                        key: globalKeyOfSah,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ظ",
+                        key: globalKeyOfLahu,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ص",
+                        key: globalKeyOfSwad,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "س",
+                        key: globalKeyOfSeen,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ز",
+                        key: globalKeyOfZay,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "ط",
+                        key: globalKeyOfThwah,
+                      )),
+                  Positioned(
+                      left: width * .3,
+                      top: height * .2,
+                      child: ArabicLetter(
+                        letter: "د",
+                        key: globalKeyOfDhal,
+                      )),
+                  Positioned(
+                      right: width * .20,
+                      bottom: height * .8,
+                      child: ArabicLetter(
+                        letter: "ت",
+                        key: globalKeyOfThah,
+                      )),
                 ],
-              )),
-          // Positioned(
-          //     bottom: height / 25,
-          //     right: 0,
-          //     left: 0,
-          //     top: 300,
-          //     child: buildButtons(width, context)),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "خ",
-                key: globalKeyOfKrag,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "غ",
-                key: globalKeyOfGown,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ح",
-                key: globalKeyOfHaeh,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ه",
-                key: globalKeyOfHah,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "أ",
-                key: globalKeyOfAA,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ع",
-                key: globalKeyOfAin,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ق",
-                key: globalKeyOfQwaf,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ك",
-                key: globalKeyOfKaf,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ل",
-                key: globalKeyOfLam,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ض",
-                key: globalKeyOfLadu,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ج",
-                key: globalKeyOfJeem,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ش",
-                key: globalKeyOfSheen,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ي",
-                key: globalKeyOfYah,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ن",
-                key: globalKeyOfNoon,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .1,
-              child: ArabicLetter(
-                letter: "ر",
-                key: globalKeyOfRah,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .3,
-              child: ArabicLetter(
-                letter: "و",
-                key: globalKeyOfVav,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .3,
-              child: ArabicLetter(
-                letter: "ب",
-                key: globalKeyOfBah,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .3,
-              child: ArabicLetter(
-                letter: "م",
-                key: globalKeyOfMeem,
-              )),
-          Positioned(
-              left: width * .4,
-              top: height * .3,
-              child: ArabicLetter(
-                letter: "ف",
-                key: globalKeyOfFah,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ذ",
-                key: globalKeyOfZal,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ث",
-                key: globalKeyOfSah,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ظ",
-                key: globalKeyOfLahu,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ص",
-                key: globalKeyOfSwad,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "س",
-                key: globalKeyOfSeen,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ز",
-                key: globalKeyOfZay,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ط",
-                key: globalKeyOfThwah,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "د",
-                key: globalKeyOfDhal,
-              )),
-          Positioned(
-              left: width * .3,
-              top: height * .2,
-              child: ArabicLetter(
-                letter: "ت",
-                key: globalKeyOfThah,
-              )),
-        ]));
+              ),
+            ),
+
+            // Image.asset(
+            //   "assets/image/humanwithoutmarksedited.png",
+            //   fit: BoxFit.contain,
+            // ),
+            buildButtons(width, context)
+          ],
+        ));
   }
 
   Column buildButtons(double width, BuildContext context) {
@@ -755,8 +793,6 @@ class ArabicLetterState extends State<ArabicLetter>
   }
 
   void startAnimation({String? url}) async {
-    // await _player
-    //     .setUrl(url ?? "https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
     await _player.setAsset("assets/audios/simpleaudio.mp3");
     _controller.reset();
 
@@ -777,55 +813,50 @@ class ArabicLetterState extends State<ArabicLetter>
     return AnimatedBuilder(
       animation: _controller,
       builder: (BuildContext context, Widget? child) {
-        return SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (BuildContext context, Widget? child) {
-                  double animationValue = _controller.value;
-                  animationValue = animationValue.clamp(0.1, 5.0);
-                  double opacity = 1.0;
-                  opacity = opacity.clamp(0.5, 50.0);
-                  return Opacity(
-                    opacity: opacity,
-                    child: Transform.scale(
-                      scale: _scaleAnimation.value * animationValue,
-                      child: Stack(
-                        children: [
-                          // Center(
-                          //     child: CustomPaint(
-                          //   painter: RipplePainter(_scaleAnimation.value),
-                          // )),
-                          FlutterRipple(
-                            duration: const Duration(seconds: 20),
-                            radius: 30,
-                            rippleColor:
-                                const Color.fromARGB(255, 253, 154, 154),
-                            child: Center(
-                              child: StrokeText(
-                                textColor: Colors.redAccent,
-                                strokeColor: Colors.white,
-                                strokeWidth: 3,
-                                text: widget.letter,
-                                textStyle: const TextStyle(
-                                  fontSize: 40.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (BuildContext context, Widget? child) {
+                double animationValue = _controller.value;
+                animationValue = animationValue.clamp(0.1, 5.0);
+                double opacity = 1.0;
+                opacity = opacity.clamp(0.5, 50.0);
+                return Opacity(
+                  opacity: opacity,
+                  child: Transform.scale(
+                    scale: _scaleAnimation.value * animationValue,
+                    child: Stack(
+                      children: [
+                        // Center(
+                        //     child: CustomPaint(
+                        //   painter: RipplePainter(_scaleAnimation.value),
+                        // )),
+                        FlutterRipple(
+                          duration: const Duration(seconds: 20),
+                          radius: 30,
+                          rippleColor: const Color.fromARGB(255, 253, 154, 154),
+                          child: Center(
+                            child: StrokeText(
+                              textColor: Colors.redAccent,
+                              strokeColor: Colors.white,
+                              strokeWidth: 3,
+                              text: widget.letter,
+                              textStyle: const TextStyle(
+                                fontSize: 40.0,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
-            ],
-          ),
+                  ),
+                );
+              },
+            ),
+          ],
         );
       },
     );
