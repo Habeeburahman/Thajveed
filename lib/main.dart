@@ -37,29 +37,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int tabWidth = 820;
-  // var cacheManager = DefaultCacheManager();
-  List<String> audioUrls = [
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-
-    // Add more audio URLs as needed
-  ];
-  // Future<void> getAllAudios() async {
-  //   for (String audioLink in audioUrls) {
-  //     await getAudio(audioLink);
-  //   }
-  //   setState(() {
-  //     isDownloaded = true;
-  //   });
-  // }
-
-  // Future<void> getAudio(String url) async {
-  //   await cacheManager.downloadFile(url);
-  // }
+  String? gifSource = "assets/gif/blankgif.gif";
 
   final GlobalKey _imageKey = GlobalKey();
 
   double _imageWidth = 0.0;
   double _imageHeight = 0.0;
+  final _player = AudioPlayer();
 
   @override
   void initState() {
@@ -68,6 +52,20 @@ class _HomePageState extends State<HomePage> {
       getImageSize();
     });
     super.initState();
+  }
+
+  void startAnimation({String? url}) async {
+    await _player.setAsset(url ?? "assets/audios/simpleaudio.mp3");
+
+    _player.play();
+
+    _player.processingStateStream.listen((processingState) {
+      if (processingState == ProcessingState.completed) {
+        gifSource = "assets/gif/blankgif.gif";
+        setState(() {});
+        print("Audio playback has ended");
+      }
+    });
   }
 
   void getImageSize() {
@@ -83,202 +81,175 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  final GlobalKey<ArabicLetterState> globalKeyOfKrag =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfGown =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfHaeh =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfAin =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfHah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfAA =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfSah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfThwah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfThah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfDhal =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfLahu =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfZal =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfSwad =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfSeen =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfZay =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfBah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfMeem =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfFah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfVav =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfNoon =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfRah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfJeem =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfSheen =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfYah =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfLam =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfLadu =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfKaf =
-      GlobalKey<ArabicLetterState>();
-
-  final GlobalKey<ArabicLetterState> globalKeyOfQwaf =
-      GlobalKey<ArabicLetterState>();
-
   void _startAnimationOfKrag() {
-    globalKeyOfKrag.currentState?.startAnimation(url: "assets/audios/krah.mp3");
+    gifSource = "assets/gif/krah.gif";
+    startAnimation(url: "assets/audios/krah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfGown() {
-    globalKeyOfGown.currentState?.startAnimation(url: "assets/audios/goin.mp3");
+    gifSource = "assets/gif/goin.gif";
+    startAnimation(url: "assets/audios/goin.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfHaeh() {
-    globalKeyOfHaeh.currentState?.startAnimation(url: "assets/audios/hah.mp3");
+    gifSource = "assets/gif/heh.gif";
+    startAnimation(url: "assets/audios/hah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfHah() {
-    globalKeyOfHah.currentState?.startAnimation();
+    gifSource = "assets/gif/haah.gif";
+
+    startAnimation(url: "assets/audios/hhah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfLam() {
-    globalKeyOfLam.currentState?.startAnimation(url: "assets/audios/lam.mp3");
+    gifSource = "assets/gif/lam.gif";
+    startAnimation(url: "assets/audios/lam.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfAin() {
-    globalKeyOfAin.currentState?.startAnimation(url: "assets/audios/ain.mp3");
+    gifSource = "assets/gif/hain.gif";
+    startAnimation(url: "assets/audios/ain.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfAa() {
-    globalKeyOfAA.currentState?.startAnimation(url: "assets/audios/hamza.mp3");
+    gifSource = "assets/gif/aa.gif";
+    startAnimation(url: "assets/audios/hamza.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfLadu() {
-    globalKeyOfLadu.currentState?.startAnimation(url: "assets/audios/lad.mp3");
+    gifSource = "assets/gif/lad.gif";
+    startAnimation(url: "assets/audios/lad.mp3");
+
+    setState(() {});
   }
 
   void _startAnimationOfKaf() {
-    globalKeyOfKaf.currentState?.startAnimation(url: "assets/audios/kaf.mp3");
+    gifSource = "assets/gif/kaf.gif";
+    startAnimation(url: "assets/audios/kaf.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfQwaf() {
-    globalKeyOfQwaf.currentState?.startAnimation(url: "assets/audios/qaf.mp3");
+    gifSource = "assets/gif/qaf.gif";
+    startAnimation(url: "assets/audios/qaf.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfSheen() {
-    globalKeyOfSheen.currentState
-        ?.startAnimation(url: "assets/audios/sheen.mp3");
+    gifSource = "assets/gif/sheen.gif";
+    startAnimation(url: "assets/audios/sheen.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfJeem() {
-    globalKeyOfJeem.currentState?.startAnimation(url: "assets/audios/jeem.mp3");
+    gifSource = "assets/gif/jeem.gif";
+    startAnimation(url: "assets/audios/jeem.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfYah() {
-    globalKeyOfYah.currentState?.startAnimation(url: "assets/audios/yah.mp3");
+    gifSource = "assets/gif/yah.gif";
+    startAnimation(url: "assets/audios/yah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfNoon() {
-    globalKeyOfNoon.currentState?.startAnimation(url: "assets/audios/noon.mp3");
+    gifSource = "assets/gif/noon.gif";
+    startAnimation(url: "assets/audios/noon.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfRah() {
-    globalKeyOfRah.currentState?.startAnimation(url: "assets/audios/rah.mp3");
+    gifSource = "assets/gif/rah.gif";
+    startAnimation(url: "assets/audios/rah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfThwah() {
-    globalKeyOfThwah.currentState
-        ?.startAnimation(url: "assets/audios/twah.mp3");
+    gifSource = 'assets/gif/thwah.gif';
+    startAnimation(url: "assets/audios/twah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfDhal() {
-    globalKeyOfDhal.currentState?.startAnimation(url: "assets/audios/dal.mp3");
+    gifSource = "assets/gif/dhal.gif";
+    startAnimation(url: "assets/audios/dal.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfThah() {
-    globalKeyOfThah.currentState?.startAnimation(url: "assets/audios/thah.mp3");
+    gifSource = "assets/gif/thwah.gif";
+    startAnimation(url: "assets/audios/thah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfSa() {
-    globalKeyOfSah.currentState?.startAnimation(url: "assets/audios/ssah.mp3");
+    gifSource = "assets/gif/seen.gif";
+    startAnimation(url: "assets/audios/ssah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOflah() {
-    globalKeyOfLahu.currentState?.startAnimation(url: "assets/audios/lah.mp3");
+    gifSource = "assets/gif/lah.gif";
+    startAnimation(url: "assets/audios/lah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfZal() {
-    globalKeyOfZal.currentState?.startAnimation(url: "assets/audios/zal.mp3");
+    gifSource = 'assets/gif/zal.gif';
+    startAnimation(url: "assets/audios/zal.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfSwad() {
-    globalKeyOfSwad.currentState?.startAnimation(url: "assets/audios/swad.mp3");
+    gifSource = 'assets/gif/swad.gif';
+
+    startAnimation(url: "assets/audios/swad.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfZay() {
-    globalKeyOfZay.currentState?.startAnimation(url: "assets/audios/zah.mp3");
+    gifSource = 'assets/gif/zay.gif';
+    startAnimation(url: "assets/audios/zah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfSeen() {
-    globalKeyOfSeen.currentState?.startAnimation(url: "assets/audios/seen.mp3");
+    gifSource = 'assets/gif/seen.gif';
+    startAnimation(url: "assets/audios/seen.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfBah() {
-    globalKeyOfBah.currentState?.startAnimation();
+    gifSource = 'assets/gif/bah.gif';
+    startAnimation(url: "assets/audios/bah.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfVav() {
-    globalKeyOfVav.currentState?.startAnimation();
+    gifSource = 'assets/gif/vav.gif';
+    startAnimation(url: "assets/audios/vav.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfMeem() {
-    globalKeyOfMeem.currentState?.startAnimation();
+    gifSource = 'assets/gif/meem.gif';
+    startAnimation(url: "assets/audios/meem.mp3");
+    setState(() {});
   }
 
   void _startAnimationOfFah() {
-    globalKeyOfFah.currentState?.startAnimation(url: "assets/audios/fah.mp3");
+    gifSource = 'assets/gif/fah.gif';
+    startAnimation(url: "assets/audios/fah.mp3");
+    setState(() {});
   }
 
   @override
@@ -287,280 +258,26 @@ class _HomePageState extends State<HomePage> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: const Color.fromRGBO(194, 32, 32, 1),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
 
 //backgroundColor: Color(0xFFF2DDBE),
         body: Column(
           children: [
-            Stack(
-              children: [
-                AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Expanded(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        'assets/image/humanwithoutmarksedited.png', // Replace this with your image path
-                        key: _imageKey,
-                        fit: BoxFit.contain,
-                      ),
+            Stack(children: [
+              AspectRatio(
+                aspectRatio: 10 / 8,
+                child: Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      gifSource ?? "assets/gif/blankgif.gif",
+                      key: _imageKey,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
-                LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    final fractionalOffset = FractionalOffset(
-                        1.0, 1.0); // Adjust these values as needed
-
-                    final leftPosition =
-                        constraints.maxWidth * fractionalOffset.dx;
-                    final topPosition =
-                        constraints.maxHeight * fractionalOffset.dy;
-
-                    return Positioned(
-                      left: leftPosition,
-                      top: topPosition,
-                      child: ArabicLetter(
-                        letter: "خ",
-                        key: globalKeyOfKrag,
-                      ),
-                    );
-                  },
-                ),
-                Positioned.fill(
-                    child: Align(
-                        alignment: FractionalOffset(0.2, 0.9),
-                        child: Text(
-                          "S",
-                          style: TextStyle(fontSize: 15),
-                        ))),
-                Positioned.fill(
-                    child: Align(
-                        alignment: FractionalOffset(1.0, 0.9),
-                        child: ArabicLetter(
-                          letter: "غ",
-                          key: globalKeyOfGown,
-                        ))),
-                Positioned(
-                    left: 18.w,
-                    bottom: 14.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ح",
-                      key: globalKeyOfHaeh,
-                    )),
-                Positioned(
-                    left: 18.w,
-                    bottom: 14.h,
-                    right: 20.w,
-                    child: Text(
-                      "0",
-                      style: TextStyle(fontSize: 15),
-                    )),
-                Positioned(
-                    left: width * .4,
-                    top: height * .1,
-                    child: ArabicLetter(
-                      letter: "ه",
-                      key: globalKeyOfHah,
-                    )),
-                Positioned(
-                    left: 19.w,
-                    bottom: 11.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "أ",
-                      key: globalKeyOfAA,
-                    )),
-                Positioned(
-                    left: 18.w,
-                    bottom: 14.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ع",
-                      key: globalKeyOfAin,
-                    )),
-                Positioned(
-                    left: 15.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ق",
-                      key: globalKeyOfQwaf,
-                    )),
-                Positioned(
-                    left: 15.w,
-                    bottom: 20.h,
-                    right: 19.w,
-                    child: ArabicLetter(
-                      letter: "ك",
-                      key: globalKeyOfKaf,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 21.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ل",
-                      key: globalKeyOfLam,
-                    )),
-                Positioned(
-                    left: 14.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ض",
-                      key: globalKeyOfLadu,
-                    )),
-                Positioned(
-                    left: 10.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ج",
-                      key: globalKeyOfJeem,
-                    )),
-                Positioned(
-                    left: 10.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ش",
-                      key: globalKeyOfSheen,
-                    )),
-                Positioned(
-                    left: 10.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ي",
-                      key: globalKeyOfYah,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 21.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ن",
-                      key: globalKeyOfNoon,
-                    )),
-                Positioned(
-                    left: 7.w,
-                    bottom: 22.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ر",
-                      key: globalKeyOfRah,
-                    )),
-                Positioned(
-                    left: 20.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "و",
-                      key: globalKeyOfVav,
-                    )),
-                Positioned(
-                    left: width * .4,
-                    top: height * .3,
-                    child: ArabicLetter(
-                      letter: "ب",
-                      key: globalKeyOfBah,
-                    )),
-                Positioned(
-                    left: width * .4,
-                    top: height * .3,
-                    child: ArabicLetter(
-                      letter: "م",
-                      key: globalKeyOfMeem,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ف",
-                      key: globalKeyOfFah,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ذ",
-                      key: globalKeyOfZal,
-                    )),
-                Positioned(
-                    left: 1.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ث",
-                      key: globalKeyOfSah,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ظ",
-                      key: globalKeyOfLahu,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ص",
-                      key: globalKeyOfSwad,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "س",
-                      key: globalKeyOfSeen,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ز",
-                      key: globalKeyOfZay,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ط",
-                      key: globalKeyOfThwah,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "د",
-                      key: globalKeyOfDhal,
-                    )),
-                Positioned(
-                    left: 6.w,
-                    bottom: 20.h,
-                    right: 20.w,
-                    child: ArabicLetter(
-                      letter: "ت",
-                      key: globalKeyOfThah,
-                    )),
-              ],
-            ),
-
-            // Image.asset(
-            //   "assets/image/humanwithoutmarksedited.png",
-            //   fit: BoxFit.contain,
-            // ),
+              ),
+            ]),
             buildButtons(width, context)
           ],
         ));
@@ -677,10 +394,6 @@ class _HomePageState extends State<HomePage> {
                   name: "ن",
                 ),
                 LetterButton(
-                  function: _startAnimationOfNoon,
-                  name: "ن",
-                ),
-                LetterButton(
                   function: _startAnimationOfRah,
                   name: "ر",
                 ),
@@ -789,191 +502,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// class ArabicLetter extends StatefulWidget {
-//   ArabicLetter({required this.key, required this.letter}) : super(key: key);
-//   String letter;
-//   @override
-//   Key key;
-
-//   @override
-//   ArabicLetterState createState() => ArabicLetterState();
-// }
-
-// class ArabicLetterState extends State<ArabicLetter>
-//     with SingleTickerProviderStateMixin {
-//   late AnimationController _controller;
-//   late Animation<double> _scaleAnimation;
-//   late Animation<double> _opacityAnimation;
-//   Random random = Random();
-//   Color color = Colors.black;
-//   AnimationStatusListener? animationStatus;
-//   final _player = AudioPlayer();
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     // _player.setUrl("https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
-
-//     _controller =
-//         AnimationController(vsync: this, duration: const Duration(seconds: 4));
-//     _scaleAnimation = Tween<double>(begin: 0.0, end: 7)
-//         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-//     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0)
-//         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-
-//     _controller.addStatusListener((status) {
-//       if (status == AnimationStatus.completed) {
-//         _controller.reset();
-//       }
-//     });
-//   }
-
-//   void startAnimation({String? url}) async {
-//     await _player.setAsset(url ?? "assets/audios/simpleaudio.mp3");
-//     _controller.reset();
-
-//     _controller.forward();
-
-//     // await Future.delayed(const Duration(milliseconds: 200));
-//     _player.play();
-//   }
-
-//   @override
-//   void dispose() {
-//     _controller.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return AnimatedBuilder(
-//       animation: _controller,
-//       builder: (BuildContext context, Widget? child) {
-//         double animationValue = _controller.value;
-//         animationValue = animationValue.clamp(0.1, 5.0);
-//         double opacity = 1.0;
-//         opacity = opacity.clamp(0.5, 50.0);
-//         return Transform.scale(
-//           scale: _scaleAnimation.value * animationValue,
-//           child: StrokeText(
-//             textColor: Colors.redAccent,
-//             strokeColor: Colors.white,
-//             strokeWidth: 3,
-//             text: widget.letter,
-//             textStyle: const TextStyle(
-//               fontSize: 40.0,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
-
-class ArabicLetter extends StatefulWidget {
-  ArabicLetter({required this.key, required this.letter}) : super(key: key);
-  String letter;
-  @override
-  Key key;
-
-  @override
-  ArabicLetterState createState() => ArabicLetterState();
-}
-
-class ArabicLetterState extends State<ArabicLetter>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-  late Animation<double> _opacityAnimation;
-  Random random = Random();
-  Color color = Colors.black;
-  AnimationStatusListener? animationStatus;
-  final _player = AudioPlayer();
-
-  @override
-  void initState() {
-    super.initState();
-    // _player.setUrl("https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
-
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 4));
-    _scaleAnimation = Tween<double>(begin: 0.0, end: 7)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _controller.reset();
-      }
-    });
-  }
-
-  void startAnimation({String? url}) async {
-    await _player.setAsset(url ?? "assets/audios/simpleaudio.mp3");
-    _controller.reset();
-
-    _controller.forward();
-
-    // await Future.delayed(const Duration(milliseconds: 200));
-    _player.play();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (BuildContext context, Widget? child) {
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (BuildContext context, Widget? child) {
-                double animationValue = _controller.value;
-                animationValue = animationValue.clamp(0.1, 5.0);
-                double opacity = 1.0;
-                opacity = opacity.clamp(0.5, 50.0);
-                return Opacity(
-                  opacity: opacity,
-                  child: Transform.scale(
-                    scale: _scaleAnimation.value * animationValue,
-                    child: Stack(
-                      children: [
-                        // Center(
-                        //     child: CustomPaint(
-                        //   painter: RipplePainter(_scaleAnimation.value),
-                        // )),
-                        StrokeText(
-                          textColor: Colors.redAccent,
-                          strokeColor: Colors.white,
-                          strokeWidth: 3,
-                          text: widget.letter,
-                          textStyle: const TextStyle(
-                            fontSize: 40.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
 class LetterButton extends StatelessWidget {
   LetterButton({Key? key, required this.name, required this.function})
       : super(key: key);
@@ -997,46 +525,3 @@ class LetterButton extends StatelessWidget {
     );
   }
 }
-
-// class RipplePainter extends CustomPainter {
-//   final double animationValue;
-//   final int numberOfCircles = 6; // Adjust the number of circles as desired
-//   final List<Color> gradientColors = [
-//     Colors.blue,
-//     Colors.green,
-//     Colors.red,
-//     Colors.orange,
-//     Colors.purple,
-//   ]; // Customize the gradient colors as desired
-
-//   RipplePainter(this.animationValue);
-
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     final maxRadius = size.width / 2;
-//     final radiusStep = maxRadius + 1;
-
-//     final gradientIndex = (animationValue * gradientColors.length).floor();
-
-//     for (int i = 0; i < numberOfCircles; i++) {
-//       final paint = Paint()
-//         ..style = PaintingStyle.stroke
-//         ..strokeWidth = .8;
-
-//       final center = Offset(size.width / 2, size.height / 2);
-//       final radius = radiusStep * i * animationValue;
-
-//       final opacity = (1.0 - (i / numberOfCircles)).clamp(0.0, 1.0);
-//       final gradientColor =
-//           gradientColors[(gradientIndex + i) % gradientColors.length];
-//       paint.color = gradientColor.withOpacity(opacity);
-
-//       canvas.drawCircle(center, radius, paint);
-//     }
-//   }
-
-//   @override
-//   bool shouldRepaint(RipplePainter oldDelegate) {
-//     return animationValue != oldDelegate.animationValue;
-//   }
-// }
