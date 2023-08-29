@@ -168,15 +168,15 @@ class _HomePageState extends State<HomePage> {
       GlobalKey<ArabicLetterState>();
 
   void _startAnimationOfKrag() {
-    globalKeyOfKrag.currentState?.startAnimation();
+    globalKeyOfKrag.currentState?.startAnimation(url: "assets/audios/krah.mp3");
   }
 
   void _startAnimationOfGown() {
-    globalKeyOfGown.currentState?.startAnimation();
+    globalKeyOfGown.currentState?.startAnimation(url: "assets/audios/goin.mp3");
   }
 
   void _startAnimationOfHaeh() {
-    globalKeyOfHaeh.currentState?.startAnimation();
+    globalKeyOfHaeh.currentState?.startAnimation(url: "assets/audios/hah.mp3");
   }
 
   void _startAnimationOfHah() {
@@ -184,84 +184,85 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _startAnimationOfLam() {
-    globalKeyOfLam.currentState?.startAnimation();
+    globalKeyOfLam.currentState?.startAnimation(url: "assets/audios/lam.mp3");
   }
 
   void _startAnimationOfAin() {
-    globalKeyOfAin.currentState?.startAnimation();
+    globalKeyOfAin.currentState?.startAnimation(url: "assets/audios/ain.mp3");
   }
 
   void _startAnimationOfAa() {
-    globalKeyOfAA.currentState?.startAnimation();
+    globalKeyOfAA.currentState?.startAnimation(url: "assets/audios/hamza.mp3");
   }
 
   void _startAnimationOfLadu() {
-    globalKeyOfLadu.currentState?.startAnimation();
+    globalKeyOfLadu.currentState?.startAnimation(url: "assets/audios/lad.mp3");
   }
 
   void _startAnimationOfKaf() {
-    globalKeyOfKaf.currentState?.startAnimation();
+    globalKeyOfKaf.currentState?.startAnimation(url: "assets/audios/kaf.mp3");
   }
 
   void _startAnimationOfQwaf() {
-    globalKeyOfQwaf.currentState?.startAnimation();
+    globalKeyOfQwaf.currentState?.startAnimation(url: "assets/audios/qaf.mp3");
   }
 
   void _startAnimationOfSheen() {
-    globalKeyOfSheen.currentState?.startAnimation();
+    globalKeyOfSheen.currentState
+        ?.startAnimation(url: "assets/audios/sheen.mp3");
   }
 
   void _startAnimationOfJeem() {
-    globalKeyOfJeem.currentState?.startAnimation();
+    globalKeyOfJeem.currentState?.startAnimation(url: "assets/audios/jeem.mp3");
   }
 
   void _startAnimationOfYah() {
-    globalKeyOfYah.currentState?.startAnimation();
+    globalKeyOfYah.currentState?.startAnimation(url: "assets/audios/yah.mp3");
   }
 
   void _startAnimationOfNoon() {
-    globalKeyOfNoon.currentState?.startAnimation();
+    globalKeyOfNoon.currentState?.startAnimation(url: "assets/audios/noon.mp3");
   }
 
   void _startAnimationOfRah() {
-    globalKeyOfRah.currentState?.startAnimation();
+    globalKeyOfRah.currentState?.startAnimation(url: "assets/audios/rah.mp3");
   }
 
   void _startAnimationOfThwah() {
-    globalKeyOfThwah.currentState?.startAnimation();
+    globalKeyOfThwah.currentState
+        ?.startAnimation(url: "assets/audios/twah.mp3");
   }
 
   void _startAnimationOfDhal() {
-    globalKeyOfDhal.currentState?.startAnimation();
+    globalKeyOfDhal.currentState?.startAnimation(url: "assets/audios/dal.mp3");
   }
 
   void _startAnimationOfThah() {
-    globalKeyOfThah.currentState?.startAnimation();
+    globalKeyOfThah.currentState?.startAnimation(url: "assets/audios/thah.mp3");
   }
 
   void _startAnimationOfSa() {
-    globalKeyOfSah.currentState?.startAnimation();
+    globalKeyOfSah.currentState?.startAnimation(url: "assets/audios/ssah.mp3");
   }
 
   void _startAnimationOflah() {
-    globalKeyOfLahu.currentState?.startAnimation();
+    globalKeyOfLahu.currentState?.startAnimation(url: "assets/audios/lah.mp3");
   }
 
   void _startAnimationOfZal() {
-    globalKeyOfZal.currentState?.startAnimation(
-        url: "https://samplelib.com/lib/preview/mp3/sample-9s.mp3");
+    globalKeyOfZal.currentState?.startAnimation(url: "assets/audios/zal.mp3");
   }
 
   void _startAnimationOfSwad() {
-    globalKeyOfSwad.currentState?.startAnimation();
+    globalKeyOfSwad.currentState?.startAnimation(url: "assets/audios/swad.mp3");
   }
 
   void _startAnimationOfZay() {
-    globalKeyOfZay.currentState?.startAnimation();
+    globalKeyOfZay.currentState?.startAnimation(url: "assets/audios/zah.mp3");
   }
 
   void _startAnimationOfSeen() {
-    globalKeyOfSeen.currentState?.startAnimation();
+    globalKeyOfSeen.currentState?.startAnimation(url: "assets/audios/seen.mp3");
   }
 
   void _startAnimationOfBah() {
@@ -277,7 +278,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _startAnimationOfFah() {
-    globalKeyOfFah.currentState?.startAnimation();
+    globalKeyOfFah.currentState?.startAnimation(url: "assets/audios/fah.mp3");
   }
 
   @override
@@ -288,233 +289,272 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(194, 32, 32, 1),
 
-        // backgroundColor: Color(0xFFF2DDBE),
+//backgroundColor: Color(0xFFF2DDBE),
         body: Column(
           children: [
-            Container(
-              width: 100.w,
-              height: 46.h,
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      'assets/image/humanwithoutmarksedited.png', // Replace this with your image path
-                      key: _imageKey,
-                      fit: BoxFit.contain,
+            Stack(
+              children: [
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/image/humanwithoutmarksedited.png', // Replace this with your image path
+                        key: _imageKey,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                  Positioned(
-                    left: 50.w,
-                    bottom: 40.h,
-                    right: 10.w,
-                    child: Text(
-                      "s",
-                      style: TextStyle(
-                          color: Colors.red, backgroundColor: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                      left: 20.w,
-                      bottom: 20.h,
-                      right: 20.w,
+                ),
+                LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    final fractionalOffset = FractionalOffset(
+                        1.0, 1.0); // Adjust these values as needed
+
+                    final leftPosition =
+                        constraints.maxWidth * fractionalOffset.dx;
+                    final topPosition =
+                        constraints.maxHeight * fractionalOffset.dy;
+
+                    return Positioned(
+                      left: leftPosition,
+                      top: topPosition,
                       child: ArabicLetter(
                         letter: "خ",
                         key: globalKeyOfKrag,
-                      )),
-                  Positioned(
-                      left: 50.w,
-                      bottom: 40.h,
-                      right: 10.w,
-                      child: ArabicLetter(
-                        letter: "غ",
-                        key: globalKeyOfGown,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ح",
-                        key: globalKeyOfHaeh,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ه",
-                        key: globalKeyOfHah,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "أ",
-                        key: globalKeyOfAA,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ع",
-                        key: globalKeyOfAin,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ق",
-                        key: globalKeyOfQwaf,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ك",
-                        key: globalKeyOfKaf,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ل",
-                        key: globalKeyOfLam,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ض",
-                        key: globalKeyOfLadu,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ج",
-                        key: globalKeyOfJeem,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ش",
-                        key: globalKeyOfSheen,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ي",
-                        key: globalKeyOfYah,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ن",
-                        key: globalKeyOfNoon,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .1,
-                      child: ArabicLetter(
-                        letter: "ر",
-                        key: globalKeyOfRah,
-                      )),
-                  Positioned(
-                      left: 20.w,
-                      bottom: 20.h,
-                      right: 20.w,
-                      child: ArabicLetter(
-                        letter: "و",
-                        key: globalKeyOfVav,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .3,
-                      child: ArabicLetter(
-                        letter: "ب",
-                        key: globalKeyOfBah,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .3,
-                      child: ArabicLetter(
-                        letter: "م",
-                        key: globalKeyOfMeem,
-                      )),
-                  Positioned(
-                      left: width * .4,
-                      top: height * .3,
-                      child: ArabicLetter(
-                        letter: "ف",
-                        key: globalKeyOfFah,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ذ",
-                        key: globalKeyOfZal,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ث",
-                        key: globalKeyOfSah,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ظ",
-                        key: globalKeyOfLahu,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ص",
-                        key: globalKeyOfSwad,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "س",
-                        key: globalKeyOfSeen,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ز",
-                        key: globalKeyOfZay,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "ط",
-                        key: globalKeyOfThwah,
-                      )),
-                  Positioned(
-                      left: width * .3,
-                      top: height * .2,
-                      child: ArabicLetter(
-                        letter: "د",
-                        key: globalKeyOfDhal,
-                      )),
-                  Positioned(
-                      right: width * .20,
-                      bottom: height * .8,
-                      child: ArabicLetter(
-                        letter: "ت",
-                        key: globalKeyOfThah,
-                      )),
-                ],
-              ),
+                      ),
+                    );
+                  },
+                ),
+                Positioned.fill(
+                    child: Align(
+                        alignment: FractionalOffset(0.2, 0.9),
+                        child: Text(
+                          "S",
+                          style: TextStyle(fontSize: 15),
+                        ))),
+                Positioned.fill(
+                    child: Align(
+                        alignment: FractionalOffset(1.0, 0.9),
+                        child: ArabicLetter(
+                          letter: "غ",
+                          key: globalKeyOfGown,
+                        ))),
+                Positioned(
+                    left: 18.w,
+                    bottom: 14.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ح",
+                      key: globalKeyOfHaeh,
+                    )),
+                Positioned(
+                    left: 18.w,
+                    bottom: 14.h,
+                    right: 20.w,
+                    child: Text(
+                      "0",
+                      style: TextStyle(fontSize: 15),
+                    )),
+                Positioned(
+                    left: width * .4,
+                    top: height * .1,
+                    child: ArabicLetter(
+                      letter: "ه",
+                      key: globalKeyOfHah,
+                    )),
+                Positioned(
+                    left: 19.w,
+                    bottom: 11.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "أ",
+                      key: globalKeyOfAA,
+                    )),
+                Positioned(
+                    left: 18.w,
+                    bottom: 14.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ع",
+                      key: globalKeyOfAin,
+                    )),
+                Positioned(
+                    left: 15.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ق",
+                      key: globalKeyOfQwaf,
+                    )),
+                Positioned(
+                    left: 15.w,
+                    bottom: 20.h,
+                    right: 19.w,
+                    child: ArabicLetter(
+                      letter: "ك",
+                      key: globalKeyOfKaf,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 21.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ل",
+                      key: globalKeyOfLam,
+                    )),
+                Positioned(
+                    left: 14.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ض",
+                      key: globalKeyOfLadu,
+                    )),
+                Positioned(
+                    left: 10.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ج",
+                      key: globalKeyOfJeem,
+                    )),
+                Positioned(
+                    left: 10.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ش",
+                      key: globalKeyOfSheen,
+                    )),
+                Positioned(
+                    left: 10.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ي",
+                      key: globalKeyOfYah,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 21.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ن",
+                      key: globalKeyOfNoon,
+                    )),
+                Positioned(
+                    left: 7.w,
+                    bottom: 22.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ر",
+                      key: globalKeyOfRah,
+                    )),
+                Positioned(
+                    left: 20.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "و",
+                      key: globalKeyOfVav,
+                    )),
+                Positioned(
+                    left: width * .4,
+                    top: height * .3,
+                    child: ArabicLetter(
+                      letter: "ب",
+                      key: globalKeyOfBah,
+                    )),
+                Positioned(
+                    left: width * .4,
+                    top: height * .3,
+                    child: ArabicLetter(
+                      letter: "م",
+                      key: globalKeyOfMeem,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ف",
+                      key: globalKeyOfFah,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ذ",
+                      key: globalKeyOfZal,
+                    )),
+                Positioned(
+                    left: 1.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ث",
+                      key: globalKeyOfSah,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ظ",
+                      key: globalKeyOfLahu,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ص",
+                      key: globalKeyOfSwad,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "س",
+                      key: globalKeyOfSeen,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ز",
+                      key: globalKeyOfZay,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ط",
+                      key: globalKeyOfThwah,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "د",
+                      key: globalKeyOfDhal,
+                    )),
+                Positioned(
+                    left: 6.w,
+                    bottom: 20.h,
+                    right: 20.w,
+                    child: ArabicLetter(
+                      letter: "ت",
+                      key: globalKeyOfThah,
+                    )),
+              ],
             ),
 
             // Image.asset(
@@ -637,10 +677,6 @@ class _HomePageState extends State<HomePage> {
                   name: "ن",
                 ),
                 LetterButton(
-                  function: _startAnimationOfRah,
-                  name: "ر",
-                ),
-                LetterButton(
                   function: _startAnimationOfNoon,
                   name: "ن",
                 ),
@@ -753,6 +789,88 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// class ArabicLetter extends StatefulWidget {
+//   ArabicLetter({required this.key, required this.letter}) : super(key: key);
+//   String letter;
+//   @override
+//   Key key;
+
+//   @override
+//   ArabicLetterState createState() => ArabicLetterState();
+// }
+
+// class ArabicLetterState extends State<ArabicLetter>
+//     with SingleTickerProviderStateMixin {
+//   late AnimationController _controller;
+//   late Animation<double> _scaleAnimation;
+//   late Animation<double> _opacityAnimation;
+//   Random random = Random();
+//   Color color = Colors.black;
+//   AnimationStatusListener? animationStatus;
+//   final _player = AudioPlayer();
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     // _player.setUrl("https://samplelib.com/lib/preview/mp3/sample-3s.mp3");
+
+//     _controller =
+//         AnimationController(vsync: this, duration: const Duration(seconds: 4));
+//     _scaleAnimation = Tween<double>(begin: 0.0, end: 7)
+//         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+//     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0)
+//         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+
+//     _controller.addStatusListener((status) {
+//       if (status == AnimationStatus.completed) {
+//         _controller.reset();
+//       }
+//     });
+//   }
+
+//   void startAnimation({String? url}) async {
+//     await _player.setAsset(url ?? "assets/audios/simpleaudio.mp3");
+//     _controller.reset();
+
+//     _controller.forward();
+
+//     // await Future.delayed(const Duration(milliseconds: 200));
+//     _player.play();
+//   }
+
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedBuilder(
+//       animation: _controller,
+//       builder: (BuildContext context, Widget? child) {
+//         double animationValue = _controller.value;
+//         animationValue = animationValue.clamp(0.1, 5.0);
+//         double opacity = 1.0;
+//         opacity = opacity.clamp(0.5, 50.0);
+//         return Transform.scale(
+//           scale: _scaleAnimation.value * animationValue,
+//           child: StrokeText(
+//             textColor: Colors.redAccent,
+//             strokeColor: Colors.white,
+//             strokeWidth: 3,
+//             text: widget.letter,
+//             textStyle: const TextStyle(
+//               fontSize: 40.0,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }
+
 class ArabicLetter extends StatefulWidget {
   ArabicLetter({required this.key, required this.letter}) : super(key: key);
   String letter;
@@ -793,7 +911,7 @@ class ArabicLetterState extends State<ArabicLetter>
   }
 
   void startAnimation({String? url}) async {
-    await _player.setAsset("assets/audios/simpleaudio.mp3");
+    await _player.setAsset(url ?? "assets/audios/simpleaudio.mp3");
     _controller.reset();
 
     _controller.forward();
@@ -833,21 +951,14 @@ class ArabicLetterState extends State<ArabicLetter>
                         //     child: CustomPaint(
                         //   painter: RipplePainter(_scaleAnimation.value),
                         // )),
-                        FlutterRipple(
-                          duration: const Duration(seconds: 20),
-                          radius: 30,
-                          rippleColor: const Color.fromARGB(255, 253, 154, 154),
-                          child: Center(
-                            child: StrokeText(
-                              textColor: Colors.redAccent,
-                              strokeColor: Colors.white,
-                              strokeWidth: 3,
-                              text: widget.letter,
-                              textStyle: const TextStyle(
-                                fontSize: 40.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                        StrokeText(
+                          textColor: Colors.redAccent,
+                          strokeColor: Colors.white,
+                          strokeWidth: 3,
+                          text: widget.letter,
+                          textStyle: const TextStyle(
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
