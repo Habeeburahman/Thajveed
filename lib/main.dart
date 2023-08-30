@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(children: [
               AspectRatio(
-                aspectRatio: 10 / 8,
+                aspectRatio: 15 / 8,
                 child: Expanded(
                   child: Align(
                     alignment: Alignment.center,
@@ -519,7 +519,7 @@ class LetterButton extends StatelessWidget {
           child: Center(
             child: Text(
               name,
-              style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
           )),
     );
